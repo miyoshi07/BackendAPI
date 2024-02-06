@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, "Product Description is Required"]
     },
-    Price: {
+    price: {
         type: Number,
         required: [true, "Product Price is Required"]
     },
