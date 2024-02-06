@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose");
 const Product = require("../models/Product");
 
 module.exports.createProduct = async (req, res) => {
@@ -18,7 +17,7 @@ module.exports.createProduct = async (req, res) => {
     await newProduct.save();
     return res.status(201).send({ message: "Product successfully created" });
   } catch (error) {
-    console.error("Error creating product product:", error);
+    console.error("Error creating product:", error);
     return res
       .status(500)
       .send({ error: "Internal Server Error: Failed to create product" });
