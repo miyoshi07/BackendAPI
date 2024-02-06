@@ -10,6 +10,7 @@ const cors = require("cors");
 
 // Import Routes
 const userRoutes = require("./routes/user");
+const productRoutes = require("./routes/product");
 
 const port = 4000;
 const app = express();
@@ -43,6 +44,7 @@ mongoose.connection.once("open", () =>
 
 // Use Backend Routes
 app.use("/users", userRoutes);
+app.use("/products", productRoutes);
 
 if (require.main === module) {
   app.listen(process.env.PORT || port, () => {
