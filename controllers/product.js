@@ -4,11 +4,10 @@ module.exports.createProduct = async (req, res) => {
   const { name, description, price } = req.body;
 
   try {
-
     const productExist = await Product.findOne({ name });
 
     if (productExist) {
-      return res.status(400).send({ error: "Product already exist"});
+      return res.status(400).send({ error: "Product already exist" });
     }
 
     if (isNaN(price) || price <= 0) {
@@ -22,7 +21,9 @@ module.exports.createProduct = async (req, res) => {
     });
 
     await newProduct.save();
-    return res.status(201).send({ message: "Product successfully created", product: newProduct });
+    return res
+      .status(201)
+      .send({ message: "Product successfully created", product: newProduct });
   } catch (error) {
     console.error("Error creating product:", error);
     return res
@@ -89,11 +90,13 @@ module.exports.updateProduct = async (req, res) => {
   const { name, description, price } = req.body;
 
   try {
-
     const productExist = await Product.find({ name });
 
-    if (productExist && productExist.some(p => p._id.toString() !== productId)) {
-      return res.status(400).send({ error: "Product name already exist"});
+    if (
+      productExist &&
+      productExist.some((p) => p._id.toString() !== productId)
+    ) {
+      return res.status(400).send({ error: "Product name already exist" });
     }
 
     if (isNaN(price) || price <= 0) {
@@ -175,5 +178,71 @@ module.exports.activateProduct = async (req, res) => {
     return res
       .status(500)
       .send({ error: "Internal Server Error: Failed to activate product" });
+  }
+};
+
+module.exports.searchProductByName = async (req, res) => {
+  const { name } = req.body;
+
+  try {
+    if (!name || (name && name.trim() === "")) {
+      return res.status(400).send({ error: "Product name cannot be empty" });
+    }
+
+    // Wild card search
+    // const products = await Product.find({ name: {
+    //   $regex: name,
+    //   $options: "i"
+    // }});
+
+    const products = await Product.find({ name });
+
+    if (products.length === 0) {
+      return res
+        .status(200)
+        .send({ message: `Unable to find product with name: ${name}` });
+    }
+
+    return res.status(200).send({ products });
+  } catch (error) {
+    console.error("Error searching by product name: ", error);
+    return res.status(500).send({
+      error: "Internal Server Error: Failed to search product by name",
+    });
+  }
+};
+
+module.exports.searchProductByPrice = async (req, res) => {
+  const { minPrice, maxPrice } = req.body;
+
+  try {
+    if (isNaN(minPrice) || isNaN(maxPrice) || minPrice === "" || maxPrice === "") {
+      return res
+        .status(400)
+        .send({ error: "Min and Max Price should be valid numeric values" });
+    }
+
+    if (minPrice < 0 || maxPrice < 0) {
+      return res
+        .status(400)
+        .send({ error: "Min and Max Price should be greater than 0" });
+    }
+
+    if (minPrice > maxPrice) {
+      return res.status(400).send({ error: "Min Price cannot be greater than Max Price"})
+    }
+
+    const products = await Product.find({
+      price: { $gte: minPrice, $lte: maxPrice }
+    });
+
+    if (products.length === 0) {
+      return res.status(200).send({ message: "No product found within the given price range"});
+    }
+
+    return res.status(200).send({ products });
+  } catch (error) {
+    console.error("Error finding products within the given price range: ", error);
+    return res.status(500).send({ error: "Internal Server Error: Failed to find products within the given price range"});
   }
 };

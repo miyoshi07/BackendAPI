@@ -22,5 +22,8 @@ router.put("/archive/:productId", verify, verifyAdmin, productController.archive
 
 router.put("/activate/:productId", verify, verifyAdmin, productController.activateProduct);
 
+router.post("/searchByName", productController.searchProductByName);
+
+router.post("/searchByPrice", productController.searchProductByPrice);
 
 module.exports = router;
