@@ -4,6 +4,13 @@ module.exports.createProduct = async (req, res) => {
   const { name, description, price } = req.body;
 
   try {
+
+    const productExist = await Product.findOne({ name });
+
+    if (productExist) {
+      return res.status(400).send({ error: "Product already exist"});
+    }
+
     if (isNaN(price) || price <= 0) {
       return res.status(400).send({ error: "Price should be greater than 0" });
     }
@@ -15,7 +22,7 @@ module.exports.createProduct = async (req, res) => {
     });
 
     await newProduct.save();
-    return res.status(201).send({ message: "Product successfully created" });
+    return res.status(201).send({ message: "Product successfully created", product: newProduct });
   } catch (error) {
     console.error("Error creating product:", error);
     return res
@@ -82,6 +89,13 @@ module.exports.updateProduct = async (req, res) => {
   const { name, description, price } = req.body;
 
   try {
+
+    const productExist = await Product.find({ name });
+
+    if (productExist && productExist.some(p => p._id.toString() !== productId)) {
+      return res.status(400).send({ error: "Product name already exist"});
+    }
+
     if (isNaN(price) || price <= 0) {
       return res.status(400).send({ error: "Price should be greater than 0" });
     }

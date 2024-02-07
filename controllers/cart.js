@@ -25,6 +25,11 @@ module.exports.addItemToUserCart = async (req, res) => {
   const { productId, quantity } = req.body;
 
   try {
+
+    if (isNaN(quantity) || quantity <= 0) {
+      return res.status(400).send({ error: "Quantity should be greater than 0" });
+    }
+
     const product = await Product.findById(productId);
 
     if (!product) {
