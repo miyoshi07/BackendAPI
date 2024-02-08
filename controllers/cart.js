@@ -38,7 +38,7 @@ module.exports.addItemToUserCart = async (req, res) => {
     }
 
     if (product && !product.isActive) {
-      return re.status(400).send({ error: "Product being added in currently inactive" })
+      return res.status(400).send({ error: "Product being added is currently inactive" })
     }
 
     let userCart = await Cart.findOne({ userId: id });
@@ -57,7 +57,7 @@ module.exports.addItemToUserCart = async (req, res) => {
 
     if (existingProductIndex !== -1) {
       const existingProduct = userCart.cartItems[existingProductIndex];
-      existingProduct.quantity += quantity;
+      existingProduct.quantity += parseInt(quantity);
       existingProduct.subTotal = existingProduct.quantity * product.price;
     } else {
       userCart.cartItems.push({

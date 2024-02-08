@@ -45,6 +45,17 @@ module.exports.verifyAdmin = (req, res, next) => {
   }
 };
 
+module.exports.verifyNotAdmin = (req, res, next) => {
+  if (!req.user.isAdmin) {
+    next();
+  } else {
+    return res.status(403).send({
+      auth: "Failed",
+      message: "Admin user cannot perform this action",
+    });
+  }
+};
+
 module.exports.isLoggedIn = (req, res, next) => {
   if (req.user) {
     next();

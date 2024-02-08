@@ -12,6 +12,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
+const orderRoutes = require("./routes/order");
 
 const port = 4000;
 const app = express();
@@ -47,6 +48,7 @@ mongoose.connection.once("open", () =>
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/carts", cartRoutes);
+app.use("/orders", orderRoutes);
 
 if (require.main === module) {
   app.listen(process.env.PORT || port, () => {
