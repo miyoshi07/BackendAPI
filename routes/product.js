@@ -26,4 +26,8 @@ router.post("/searchByName", productController.searchProductByName);
 
 router.post("/searchByPrice", productController.searchProductByPrice);
 
+router.get("/:productId/reviews", verify, productController.getProductReviews);
+
+router.get("/:productId/productStatistics", productController.getProductStatistics);
+
 module.exports = router;

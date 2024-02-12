@@ -11,6 +11,9 @@ router.post("/checkout", verify, verifyNotAdmin, orderController.checkoutUserOrd
 
 router.get("/all-orders", verify, verifyAdmin, orderController.getAllOrders);
 
-router.get("/my-orders", verify, verifyNotAdmin, orderController.getUserOrders)
+router.get("/my-orders", verify, verifyNotAdmin, orderController.getUserOrders);
+
+// Stretch Goals
+router.put("/:orderId/change-order-status", verify, orderController.updateOrderStatus);
 
 module.exports = router;

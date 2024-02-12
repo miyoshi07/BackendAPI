@@ -1,4 +1,7 @@
 const Product = require("../models/Product");
+const ProductReview = require("../models/ProductReview");
+const User = require("../models/User");
+const Order = require("../models/Order");
 
 module.exports.createProduct = async (req, res) => {
   const { name, description, price } = req.body;
@@ -246,3 +249,85 @@ module.exports.searchProductByPrice = async (req, res) => {
     return res.status(500).send({ error: "Internal Server Error: Failed to find products within the given price range"});
   }
 };
+
+module.exports.getProductReviews = async (req, res) => {
+  const { productId } = req.params;
+
+  try {
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res.status(404).send({ error: "Product not found" });
+    }
+
+    const productReviews =  await ProductReview.find({ productId, isDeleted: false });
+
+    if (productReviews.length === 0) {
+      return res.status(404).send({ error: "No product reviews found" });
+    }
+
+    const reviews = productReviews.map(async productReview =>  {
+
+      return {
+        customerName: productReview.displayName,
+        reviewId: productReview._id,
+        review: productReview.review,
+        rating: productReview.rating,
+        date: productReview.submittedOn
+      }
+    });
+
+    const reviewResponse = await Promise.all(reviews);
+
+    return res.status(200).send({ reviews: reviewResponse });
+
+  } catch (error) {
+    console.error("Error retrieving product reviews: ", error);
+    return res.status(500).send({ error: "Internal Server Error: Failed to retrieve product reviews" });
+  }
+};
+
+module.exports.getProductStatistics = async (req, res) => {
+  const { productId } = req.params;
+
+  try {
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res.status(404).send({ error: "Product not found" });
+    }
+
+    const productReviews = await ProductReview.find({ productId, isDeleted: false });
+
+    const averageRating = productReviews.length === 0 ? 0 : computeAverageRating(productReviews);
+
+    const productOrders = await Order.find({ 'productsOrdered.productId': productId });
+
+    let totalOrders = 0;
+    let totalProductEarnings = 0;
+    productOrders.forEach(order => {
+      const product = order.productsOrdered.find(product => product.productId === productId);
+
+      if (product) {
+        totalOrders += product.quantity;
+        totalProductEarnings += product.subTotal;
+      }
+    });
+
+    return res.status(200).send({ 
+      averageRating,
+      totalOrders,
+      totalProductEarnings,
+      totalReviews: productReviews.length
+    })
+    
+  } catch (error) {
+    console.error("Error retrieving product statistics: ", error);
+    return res.status(500).send({ error: "Internal Server Error: Failed to retrieve product statistics" });
+  }
+};
+
+const computeAverageRating = (productReviews) => {
+  const totalRating = productReviews.reduce((total, review) => total + review.rating, 0);
+  return totalRating / productReviews.length;
+}

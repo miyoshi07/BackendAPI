@@ -63,7 +63,7 @@ module.exports.getUserOrders = async (req, res) => {
 
   try {
     const orders = await Order.find({ userId: id });
-    
+
     if (orders.length === 0) {
       return res.status(404).send({ message: "No orders found for this user" });
     }
@@ -74,5 +74,34 @@ module.exports.getUserOrders = async (req, res) => {
     return res.status(500).send({
       error: "Internal Server Error: Failed to retrieve user's orders",
     });
+  }
+};
+
+// Stretch Goal
+module.exports.updateOrderStatus = async (req, res) => {
+  const { orderId } = req.params;
+  const { status } = req.body;
+
+  try {
+    const order = await Order.findByIdAndUpdate(
+      orderId,
+      {
+        status,
+      },
+      { new: true }
+    );
+
+    if (!order) {
+      return res.status(404).send({ error: "Order not found" });
+    }
+
+    return res
+      .status(200)
+      .send({ message: "Order status successfully updated", order });
+  } catch (error) {
+    console.error("Error updating order status: ", error);
+    return res
+      .status(500)
+      .send({ error: "Internal Server Error: Failed to update order status" });
   }
 };
