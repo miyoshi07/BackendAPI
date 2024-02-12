@@ -21,44 +21,44 @@
 >### Data Model Design
 >### Final Code Review
 >### User Endpoints
->- Register User - POST /users
->- Login User - POST /users/login
+>- Register User - `POST /users`
+>- Login User - `POST /users/login`
 
 >### Product Endpoints
->- Create Product - POST /products
->- Update Product - PUT /products/:productId
->- Archive Product - PUT /products/archive/:productId
->- Activate Product - PUT /products/activate/:productId
->- Search Product By Price - POST /products/searchByPrice
+>- Create Product - `POST /products`
+>- Update Product - `PUT /products/:productId`
+>- Archive Product - `PUT /products/archive/:productId`
+>- Activate Product - `PUT /products/activate/:productId`
+>- Search Product By Price - `POST /products/searchByPrice`
 
 >### Cart Endpoints
->- Add to Cart - POST /carts/addToCart
->- Update Quantity - PUT /carts/updateQuantity
+>- Add to Cart - `POST /carts/addToCart`
+>- Update Quantity - `PUT /carts/updateQuantity`
 
 >### Order Endpoints
->- Get All Orders - GET /orders/all-orders
->- Get My Orders - GET /orders/my-orders
+>- Get All Orders - `GET /orders/all-orders`
+>- Get My Orders - `GET /orders/my-orders`
 
 
 ## Features by Zyron Jade Fausto
 >### User Endpoints
->- Get User - GET /user/details
->- Update User as Admin - PUT /users/:userId/set-as-admin
->- Update User Password - PUT /users/update-password
+>- Get User - `GET /user/details`
+>- Update User as Admin - `PUT /users/:userId/set-as-admin`
+>- Update User Password - `PUT /users/update-password`
 
 >### Product Endpoints
->- Get Products - GET /products/all
->- Get Active Products - GET /products/active
->- Get Product by Id - GET /products/:productId
->- Search Product By Name - POST /products/searchByName
+>- Get Products - `GET /products/all`
+>- Get Active Products - `GET /products/active`
+>- Get Product by Id - `GET /products/:productId`
+>- Search Product By Name - `POST /products/searchByName`
 
 >### Cart Endpoints
->- Get User Cart - GET /carts
->- Remove From User Cart - PUT /carts/:productId/removeFromCart
->- Clear User Cart - PUT /carts/clearCart
+>- Get User Cart - `GET /carts`
+>- Remove From User Cart -` PUT /carts/:productId/removeFromCart`
+>- Clear User Cart - `PUT /carts/clearCart`
 
 >### Order Endpoints
->- Checkout Order - POST /orders/checkout
+>- Checkout Order - `POST /orders/checkout`
 
 
 ## Stretch Goals by Rowel Libunao
