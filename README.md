@@ -62,6 +62,10 @@
 
 
 ## Stretch Goals by Rowel Libunao
+>### Sending Email Notification
+>>- Email notification will be received one successful registration and successful password update.
+>>- Note: `.env` file needs to be added for the SMTP configuration. See `.env.sample` file
+
 >### Product Review Module
 >> This module is to let user add their reviews and rating to the products they have ordered. 
 
@@ -99,7 +103,7 @@
 - Mongoose
 - Bcrypt
 - JWT
-
+- Nodemailer JS
 
 ### How to run application locally
 - Clone the application to your local machine

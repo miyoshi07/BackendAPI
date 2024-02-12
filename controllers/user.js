@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const auth = require("../auth");
+const { sendEmail } = require("../email-helper");
 
 // Models
 const User = require("../models/User");
@@ -37,6 +38,16 @@ module.exports.createUser = async (req, res) => {
 
     const user = await newUser.save();
     user.password = undefined;
+
+    // send email notification
+    await sendEmail({
+      isHtml: true,
+      to: email,
+      subject: "ECA-Libunao-Fausto: New User Registration Notification",
+      message: `<p>Welcome, <b>${user.firstName} ${user.lastName}</b></p>
+      <p>You have successfully registered your account to <b>Libunao-Fausto E-Commerce API</b></p>`
+    })
+
     return res.status(201).send({ message: "Registered Successfully", user });
   } catch (error) {
     console.error("Error in saving:", error);
@@ -128,7 +139,7 @@ module.exports.updateUserAsAdmin = async (req, res) => {
 module.exports.updatePassword = async (req, res) => {
   try {
     const { newPassword } = req.body;
-    const { id } = req.user;
+    const { id, email } = req.user;
 
     if (newPassword.length < 8) {
       return res
@@ -141,6 +152,13 @@ module.exports.updatePassword = async (req, res) => {
       password: hashedPassword,
     });
 
+    // send email notification
+    await sendEmail({
+      isHtml: true,
+      to: email,
+      subject: "ECA-Libunao-Fausto: Change Password Notification",
+      message: "<p>You have successfully updated your password for <b>Libunao-Fausto E-Commerce API</b>.</p>"
+    })
     return res.status(200).send({ message: "Password updated successfully" });
   } catch (error) {
     console.error("Error updating user password:", error);
