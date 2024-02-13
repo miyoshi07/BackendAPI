@@ -5,7 +5,6 @@ const router = express.Router();
 const cartController = require("../controllers/cart")
 const { verify } = require("../auth");
 
-
 //Routes
 router.get("/", verify, cartController.getUserCart);
 

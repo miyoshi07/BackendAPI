@@ -5,8 +5,6 @@ const router = express.Router();
 const productController = require("../controllers/product")
 const { verify, verifyAdmin } = require("../auth");
 
-
-
 // Routes
 router.post("/", verify, verifyAdmin, productController.createProduct);
 
@@ -26,6 +24,7 @@ router.post("/searchByName", productController.searchProductByName);
 
 router.post("/searchByPrice", productController.searchProductByPrice);
 
+// Stretch Goals
 router.get("/:productId/reviews", verify, productController.getProductReviews);
 
 router.get("/:productId/productStatistics", productController.getProductStatistics);

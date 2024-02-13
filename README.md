@@ -72,20 +72,20 @@
 >> Created a separate schema called **"productReviews"**
 
 >### Product Review Endpoints
->- Add Product Review - POST /reviews/:productId/addProductReview 
+>- Add Product Review - `POST /reviews/:productId/addProductReview `
 >>- Let user add review and rating to the products they have previously ordered. There is a restriction that the user can only add review and rating to the products they have record in order collection.
 >>- Note: User can add review and rating "Anonymously".
 
->- Update Product Review - PUT /reviews/:reviewId/updateProductReview
+>- Update Product Review - `PUT /reviews/:reviewId/updateProductReview`
 >>- Update a product review record
 
->- Delete Product Review - PUT /reviews/:reviewId/deleteProductReview
+>- Delete Product Review - `PUT /reviews/:reviewId/deleteProductReview`
 >>- Soft delete a product review record
 
 >### Additional Product Endpoints
->- Get Product Reviews - GET /products/:productId/reviews
+>- Get Product Reviews - `GET /products/:productId/reviews`
 >>- Retrieve all product reviews for a specific product.
->- Get Product Statistics - GET /products/:productId/productStatistics
+>- Get Product Statistics -` GET /products/:productId/productStatistics`
 >>- Retrieve different product statistics such as
 >>>- Average Rating - Calculated using the average of all ratings to the product in productReview collection
 >>>- Total Reviews - Total number of product review records for the given product
@@ -93,7 +93,7 @@
 >>>- Total Product Earnings - Sum of all the total amount of the orders that contains the given product
 
 >#### Additional Order Endpoint
->- Update Order Status - PUT /orders/:orderId/change-order-status
+>- Update Order Status - `PUT /orders/:orderId/change-order-status`
 >>- Currently intended if the user wish to cancel an order
 
 ## Technologies
