@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 // require("./passport");
 const cors = require("cors");
 
-
 // Import Routes
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
@@ -57,5 +56,6 @@ if (require.main === module) {
     console.log(`API is now online on port ${process.env.PORT || port}`);
   });
 }
+
 
 module.exports = { app, mongoose };
