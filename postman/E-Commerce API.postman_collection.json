@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\" : \"Jane\",\r\n    \"lastName\" : \"Doe\",\r\n    \"email\" : \"janedoe@test.com\",\r\n    \"mobileNo\" : \"09123456789\",\r\n    \"password\": \"janedoe12345\"\r\n}",
+							"raw": "{\r\n    \"firstName\" : \"Zyron\",\r\n    \"lastName\" : \"Fausto\",\r\n    \"email\" : \"zyrnfausto@gmail.com\",\r\n    \"mobileNo\" : \"09123456789\",\r\n    \"password\": \"zyronfausto123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -75,12 +75,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/users/login",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/users/login",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"users",
 								"login"
@@ -118,7 +116,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"kitana@gmail.com\",\r\n    \"password\": \"kitana123\"\r\n}",
+							"raw": "{\r\n    \"email\": \"row.libunao@gmail.com\",\r\n    \"password\": \"rowlib12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -156,12 +154,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/users/details",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/users/details",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"users",
 								"details"
@@ -186,12 +182,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/users/details",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/users/details",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"users",
 								"details"
@@ -216,12 +210,10 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/users/:userId/set-as-admin",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/users/:userId/set-as-admin",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"users",
 								":userId",
@@ -245,7 +237,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YzBkODJjZDcwMmZlOWIxYTFiMDA3YiIsImVtYWlsIjoiYXZhbWVuZGV6QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDcxMzgwMTF9.8U-cacfzXc8OIRdzIYX4N5At4cbauuog-DIBUVmljHI",
+									"value": "{{col.userAccessToken}}",
 									"type": "string"
 								}
 							]
@@ -254,7 +246,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"newPassword\": \"newavamendez123\"\r\n}",
+							"raw": "{\r\n    \"newPassword\": \"rowlib123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -262,12 +254,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/users/update-password",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/users/update-password",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"users",
 								"update-password"
@@ -306,12 +296,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/products/",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								""
@@ -326,12 +314,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/products/all",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/all",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								"all"
@@ -346,12 +332,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/products/active",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/active",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								"active"
@@ -366,12 +350,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/products/:productId",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/:productId",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								":productId"
@@ -411,12 +393,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/products/:productId",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/:productId",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								":productId"
@@ -447,12 +427,10 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/products/archive/:productId",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/archive/:productId",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								"archive",
@@ -493,12 +471,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/products/activate/:productId",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/activate/:productId",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								"activate",
@@ -539,12 +515,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/products/searchByName",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/searchByName",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								"searchByName"
@@ -578,12 +552,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/products/searchByPrice",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/searchByPrice",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								"searchByPrice"
@@ -608,12 +580,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/products/:productId/reviews",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/:productId/reviews",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								":productId",
@@ -645,12 +615,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/products/:productId/productStatistics",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/products/:productId/productStatistics",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"products",
 								":productId",
@@ -687,14 +655,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carts/",
+							"raw": "http://localhost:4000/cart/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"carts",
+								"cart",
 								""
 							]
 						}
@@ -726,14 +694,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carts/addToCart",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/cart/addToCart",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
-								"carts",
+								"cart",
 								"addToCart"
 							]
 						}
@@ -765,14 +731,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/carts/updateQuantity",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/cart/updateQuantity",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
-								"carts",
+								"cart",
 								"updateQuantity"
 							]
 						}
@@ -795,14 +759,12 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carts/:productId/removeFromCart",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/cart/:productId/removeFromCart",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
-								"carts",
+								"cart",
 								":productId",
 								"removeFromCart"
 							],
@@ -832,14 +794,12 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/carts/clearCart",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/cart/clearCart",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
-								"carts",
+								"cart",
 								"clearCart"
 							]
 						}
@@ -867,12 +827,10 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/orders/checkout",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/orders/checkout",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"orders",
 								"checkout"
@@ -897,12 +855,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/orders/all-orders",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/orders/all-orders",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"orders",
 								"all-orders"
@@ -927,12 +883,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/orders/my-orders",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/orders/my-orders",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"orders",
 								"my-orders"
@@ -966,12 +920,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/orders/:orderId/change-order-status",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/orders/:orderId/change-order-status",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"orders",
 								":orderId",
@@ -1017,12 +969,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/reviews/:productId/addProductReview",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/reviews/:productId/addProductReview",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"reviews",
 								":productId",
@@ -1063,12 +1013,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/reviews/:reviewId/updateProductReview",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/reviews/:reviewId/updateProductReview",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"reviews",
 								":reviewId",
@@ -1100,12 +1048,10 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/reviews/:reviewId/deleteProductReview",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/reviews/:reviewId/deleteProductReview",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "4000",
 							"path": [
 								"reviews",
 								":reviewId",
@@ -1157,6 +1103,11 @@
 		{
 			"key": "col.userAccessToken",
 			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://ec2-18-218-180-213.us-east-2.compute.amazonaws.com/b4",
 			"type": "string"
 		}
 	]

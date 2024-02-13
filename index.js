@@ -47,7 +47,7 @@ mongoose.connection.once("open", () =>
 // Use Backend Routes
 app.use("/b4/users", userRoutes);
 app.use("/b4/products", productRoutes);
-app.use("/b4/carts", cartRoutes);
+app.use("/b4/cart", cartRoutes);
 app.use("/b4/orders", orderRoutes);
 app.use("/b4/reviews", productReviewRoutes);
 
