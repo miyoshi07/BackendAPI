@@ -15,7 +15,7 @@ const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/order");
 const productReviewRoutes = require("./routes/productReview");
 
-const port = 4000;
+const port = 4004;
 const app = express();
 
 app.use(express.json());
@@ -46,11 +46,11 @@ mongoose.connection.once("open", () =>
 );
 
 // Use Backend Routes
-app.use("/users", userRoutes);
-app.use("/products", productRoutes);
-app.use("/carts", cartRoutes);
-app.use("/orders", orderRoutes);
-app.use("/reviews", productReviewRoutes);
+app.use("/b4/users", userRoutes);
+app.use("/b4/products", productRoutes);
+app.use("/b4/carts", cartRoutes);
+app.use("/b4/orders", orderRoutes);
+app.use("/b4/reviews", productReviewRoutes);
 
 if (require.main === module) {
   app.listen(process.env.PORT || port, () => {
